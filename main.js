@@ -166,7 +166,7 @@ function searchBySize(size) {
 //differentiating the different product sets - needed to autopopulate by full model rather than having a .box for each size
 const uniqueNameSet = new Set();
 
-//auto-populating website with array
+//auto-populating website with array info
 products.forEach(product =>{
     console.log(`Product type: ${product.type}`);
     if (!uniqueNameSet.has(product.name)) {
@@ -282,7 +282,7 @@ function handleQuantitySelection(product, quantity) {
     document.getElementById(`quantityBtn${product.lineId}`).innerText = quantity;
 }
 
-//sale function - eventually will link to site so user will not need to know id, but backend that's how we can manage inventory -- might be useful for updating inventory post sale
+//sale function - eventually will link to site so user will not need to know id, but backend that's how we can manage inventory -- currently not incorporated - might be useful for updating inventory post sale
 function sale(id, quantity) {
     let productIndex = products.findIndex((p) => p.id === id.toLowerCase());
     if (productIndex) {
@@ -312,7 +312,9 @@ cart.length === 0 && (() => {
 function addToCart (event) {
     let productId = event.target.getAttribute('data-product-id');
     const selectedProduct = products.find(product => product.lineId === productId);
-    if (selectedProduct) {
+    if (!selectedProduct.selectedQuantity || !selectedProduct.selectedSize) {
+        alert("Please pick a size and number to add to your cart. Thanks!")
+    } else if (selectedProduct) {
         let productName = selectedProduct.name;
         let productPrice = selectedProduct.price;
         let selectedSize = selectedProduct.selectedSize;
@@ -328,7 +330,7 @@ function addToCart (event) {
         <br><b>Your total: €${cartPriceTotal}</b>`;
         document.getElementById("emptyCart").innerHTML = cartMessage;
 
-        let checkoutButton = document.getElementById("checkoutButton")
+        let checkoutButton = document.getElementById("checkoutButton");
         if (!checkoutButton) {
             checkoutButton = document.createElement("div");
             checkoutButton.id = "checkoutButton";
@@ -420,7 +422,6 @@ function finalCheckout () {
 }
 
 function closeWindow () {
-    alert("ñlkj");
     let checkoutWindows = document.querySelectorAll(".checkoutWindow");
     checkoutWindows.forEach(window => {
         window.style.display = "none";
@@ -442,6 +443,39 @@ function removeItem (event) {
     openCheckout ();
 }
 
+//header and type box filters listeners
+document.getElementById("shirtDropdown").addEventListener("click", shirtsOnly);
+document.getElementById("hoodieDropdown").addEventListener("click", hoodiesOnly);
+document.getElementById("artDropdown").addEventListener("click", artOnly);
+document.getElementById("clearFiltersBtn").addEventListener("click", clearFilters);
+document.getElementById("shirtSelector").addEventListener("click", shirtsOnly);
+document.getElementById("hoodieSelector").addEventListener("click", hoodiesOnly);
+document.getElementById("artSelector").addEventListener("click", artOnly);
+
+//filters
+function clearFilters () {
+    document.querySelectorAll(".shirtBox, .hoodieBox, .artBox").forEach(box => {
+        box.style.display = "block";
+    })
+}
+function shirtsOnly () {
+    clearFilters ();
+    document.querySelectorAll(".hoodieBox, .artBox").forEach(box => {
+        box.style.display = "none";
+    })
+}
+function hoodiesOnly () {
+    clearFilters ();
+    document.querySelectorAll(".shirtBox, .artBox").forEach(box => {
+        box.style.display = "none";
+    })
+}
+function artOnly () {
+    clearFilters ();
+    document.querySelectorAll(".hoodieBox, .shirtBox").forEach(box => {
+        box.style.display = "none";
+    })
+}
 
 
 //testing search functions

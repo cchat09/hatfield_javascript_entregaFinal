@@ -28,9 +28,8 @@
                       Browse clothes
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">T-shirts</a></li>
-                      <li><a class="dropdown-item" href="#">Hoodies</a></li>
-                      <li><a class="dropdown-item" href="#">Other stuff</a></li>
+                      <li><a class="dropdown-item" id="shirtDropdown" href="#">T-shirts</a></li>
+                      <li><a class="dropdown-item" id="hoodieDropdown" href="#">Hoodies</a></li>
                     </ul>
                   </li>
                   <li class="nav-item dropdown">
@@ -38,8 +37,7 @@
                       Browse art
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">wall prints</a></li>
-                      <li><a class="dropdown-item" href="#">magnets and stickers</a></li>
+                      <li><a class="dropdown-item" id="artDropdown" href="#">wall prints</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">
@@ -59,18 +57,19 @@
         <div class="inputContainer">
           <p>What are <i>you</i> into?</p>
           <input type="text">
-          <button type="button" class="btn btn-danger">Search</button>
+          <button type="button" class="btn btn-danger" id="searBarBtn">Search</button>
+          <button type="button" class="btn btn-danger" id="clearFiltersBtn">Clear filters</button>
         </div>
         <div class="mainContainer">
-            <div class="box shirtBox">
+            <div class="box shirtBox" id="shirtSelector">
                 <h2>T-Shirts</h2>
                 <p>Express yourself and wear your unique, nerdy pride on your (short) sleeve.</p>
             </div>
-            <div class="box hoodieBox">
+            <div class="box hoodieBox" id="hoodieSelector">
                 <h2>Hoodies</h2>
                 <p>Your fun and freaky suit of armor for the chilliest, or coziest, of days.</p>
             </div>
-            <div class="box artBox">
+            <div class="box artBox" id="artSelector">
                 <h2>Home Art</h2>
                 <p>Your house should be as cool as you are. No bare walls or hotel art here, missy.</p>
             </div>

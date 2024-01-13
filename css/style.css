@@ -7,6 +7,10 @@ header img {
   width: auto;
 }
 
+#clearFiltersBtn {
+  margin-left: 35px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
