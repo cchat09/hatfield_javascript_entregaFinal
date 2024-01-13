@@ -1,0 +1,27 @@
+.box {
+    width: 85%;
+    height: 25%;
+    border-style: double;
+    border-color: black;
+    padding: 15px;
+    margin: auto;
+}
+
+#productContainer .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.shirtBox {
+    background-color: $pastelBlue;
+}
+
+.hoodieBox {
+    background-color: $pastelPink;
+}
+
+.artBox {
+    background-color: $pastelGreen;
+}

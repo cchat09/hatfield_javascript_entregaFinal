@@ -1,0 +1,15 @@
+#cart {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 25vh;
+    background-color: $pastelPink;
+    align-items: center;
+    
+}
+
+#cart #seeCart {
+    padding-top: 10px;
+    font-weight: bold;
+}
