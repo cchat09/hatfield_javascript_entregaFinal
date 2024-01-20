@@ -265,8 +265,7 @@ products.forEach(product =>{
         Array.from(quantityOptions).forEach(option => {
             option.addEventListener('click', (event) => {
                 event.preventDefault();
-                handleQuantitySelection (product, option.innerText);
-                
+                handleQuantitySelection (product, option.innerText);    
             });
         });
     };
@@ -383,38 +382,114 @@ function openCheckout (e) {
             totalSum += item.cartPriceToAdd;
             main.innerHTML += `
             <div class="cartItem" id="cartItem${item.productId}">
-                <p>${item.productName} - ${item.selectedType}</p>
-                <p>Size: ${item.selectedSize}</p>
-                <p>Quantity: ${item.selectedQuantity}</p>
-                <p>Total price: €${item.cartPriceToAdd}</p>
+                <button class="btn">
+                    <b>${item.productName}</b> - ${item.selectedType}
+                </button>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" id="sizeRevision${item.productId}" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Size: ${item.selectedSize}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item sizeOptionRev" href="#">XS</a></li>
+                        <li><a class="dropdown-item sizeOptionRev" href="#">S</a></li>
+                        <li><a class="dropdown-item sizeOptionRev" href="#">M</a></li>
+                        <li><a class="dropdown-item sizeOptionRev" href="#">L</a></li>
+                        <li><a class="dropdown-item sizeOptionRev" href="#">XL</a></li>
+                        <li><a class="dropdown-item sizeOptionRev" href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" id="quantityRevision${item.lineId}" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Quantity: ${item.selectedQuantity}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item quantityOptionRev" href="#">1</a></li>
+                        <li><a class="dropdown-item quantityOptionRev" href="#">2</a></li>
+                        <li><a class="dropdown-item quantityOptionRev" href="#">3</a></li>
+                        <li><a class="dropdown-item quantityOptionRev" href="#">4</a></li>
+                        <li><a class="dropdown-item quantityOptionRev" href="#">5</a></li>
+                    </ul>
+                </div>
+                <button class="btn">
+                    Item price total:  <b>€${item.cartPriceToAdd}</b>
+                </button>
                 <i class="fa-solid fa-trash removeIcon" id="removeBtn${item.productId}"></i>
             </div>
             `;
+            const sizeDropdownRevision = document.getElementById(`sizeRevision${item.productId}`);
+            const quantityDropdownRevision = document.getElementById(`quantityRevision${item.productId}`);
+            
+            // const sizeOptionsRevision = sizeDropdownRevision.getElementsByClassName('sizeOptionRev');
+            // Array.from(sizeOptionsRevision).forEach(option => {
+            //     option.addEventListener('click', (event) => {
+            //         event.preventDefault();
+            //         alert("click!")
+            //         reviseSizeSelection(product, option.innerText);
+            //     });
+            // });
+
         })
         main.innerHTML += `<b>Your total = €${totalSum}</b>
         <button id="finalCheckout" class="finalCheckout">Checkout</button>
         `;
 
+        // const sizeDropdownRevision = document.getElementById(`sizeRevision${item.productId}`);
+        // const quantityDropdownRevision = document.getElementById(`quantityRevision${item.productId}`);
+        
+        // const sizeOptionsRevision = sizeDropdownRevision.getElementsByClassName('sizeOptionRev');
+        // Array.from(sizeOptionsRevision).forEach(option => {
+        //     option.addEventListener('click', (event) => {
+        //         event.preventDefault();
+        //         reviseSizeSelection(product, option.innerText);
+        //     });
+        // });
+
+        // const quantityOptionsRevision = quantityDropdownRevision.getElementsByClassName('quantityOptionRev');
+        // Array.from(quantityOptionsRevision).forEach(option => {
+        //     option.addEventListener('click', (event) => {
+        //         event.preventDefault();
+        //         reviseQuantitySelection (product, option.innerText);
+                
+        //     });
+        // });
+
     }
-    let closeCheckoutButton = document.getElementById("closeCheckout");
-    closeCheckoutButton.addEventListener("click", closeWindow);
-    
-    let finalCheckoutButton = document.getElementById("finalCheckout");
-    finalCheckoutButton.addEventListener("click", finalCheckout);
 }
+
 
 
 //button listeners
 document.body.addEventListener("click", function(event) {
     if (event.target.classList.contains("removeIcon")) {
-        // alert("Clicked event: " + event.target.id);
         removeItem(event);
     } else if (event.target.classList.contains("closeCheckout")) {
         closeWindow ();
     } else if (event.target.classList.contains("finalCheckout")) {
         finalCheckout ();
+    } else if (event.target.classList.contains("sizeOptionRev")) {
+        sizeRevision (event.target);
+    } else if (event.target.classList.contains("quantityOptionRev")) {
+        quantityRevision (event.target);
     }
 });
+
+function sizeRevision (element) {
+    const sizeRevisionElement = element.closest('.cartItem').querySelector('[id^="sizeRevision"]');
+    // const productIdString = sizeRevisionElement.id;
+    alert("Size adjusted!");
+    let replacementSize = element.innerText;
+    sizeRevisionElement.innerText = replacementSize
+}
+
+function quantityRevision (element) {
+    const quantityRevisionElement = element.closest('.cartItem').querySelector('[id^="quantityRevision"]');
+    // const productIdStringQuant = quantityRevisionElement.id;
+    alert("Quantity adjusted!");
+    let replacementQuantity = element.innerText;
+    quantityRevisionElement.innerText = replacementQuantity;
+}
+
+
 
 function finalCheckout () {
     alert("Your order has been sent! Thanks!")
@@ -476,6 +551,17 @@ function artOnly () {
         box.style.display = "none";
     })
 }
+
+
+// function handleSizeSelection(product, size) {
+//     product.selectedSize = size;
+//     document.getElementById(`sizeBtn${product.lineId}`).innerText = size;
+// }
+
+// function handleQuantitySelection(product, quantity) {
+//     product.selectedQuantity = quantity;
+//     document.getElementById(`quantityBtn${product.lineId}`).innerText = quantity;
+// }
 
 
 //testing search functions
