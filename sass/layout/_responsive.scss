@@ -1,3 +1,51 @@
+@media (max-width: 500px) {
+    body {
+        padding-left: 1%;
+        padding-right: 1%
+    }
+    .box {
+        margin-bottom: 4%;
+    }
+
+    #sizeHeader {
+        margin-top: 4%;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    #checkoutHeader {
+        margin-top: 4%;
+        flex-direction: column;
+        align-items: center; 
+    }
+    #checkoutMain {
+        padding-top: 0px;
+    }
+    .checkoutBtnContainer {
+        padding-bottom: 2px;
+    }
+    .cartItem {
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 6px;
+        width: 80%;
+        border-style: double;
+        border-color: black;
+        padding-bottom: 10px;
+    }
+    .cartTotal {
+        margin-top: 20px;
+    }
+    #closeCheckout {
+        position: absolute;
+        top: 30px;
+        right: 25px;
+    }
+    .productBox .btn {
+        margin-top: 5px;
+    }
+}
+
 @media (min-width: 768px) {
     .mainContainer {
         display: flex;
@@ -28,26 +76,32 @@
         height: 30%;
     }
 
-    }
+}
     
 
 
-    @media (min-width: 400px) {
-        .buttonContainer {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            justify-content: space-evenly;
-            
-        }
+@media (min-width: 400px) {
+    .buttonContainer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
         
-        .inputContainer {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            p {
-                margin-right: 20px;
-                margin-top: 7px;
-            }
+    }
+    
+    .inputContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        p {
+            margin-right: 20px;
+            margin-top: 7px;
         }
     }
+}
+
+// @media (min-width: 1080px) {
+//     .mainContainer{
+//         width: 60%; 
+//     }
+// }

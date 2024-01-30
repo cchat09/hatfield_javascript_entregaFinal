@@ -5,11 +5,16 @@
     width: 100vw;
     height: 25vh;
     background-color: $pastelPink;
-    align-items: center;
-    
+    align-items: flex-end;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 #cart #seeCart {
     padding-top: 10px;
     font-weight: bold;
+}
+
+#emptyCart {
+    padding-bottom: 10px;
 }

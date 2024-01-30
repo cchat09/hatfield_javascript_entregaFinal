@@ -1,4 +1,4 @@
-#checkoutWindow {
+.checkoutWindow {
     position: fixed;
     height: 80vh;
     width: 90vw;
@@ -9,6 +9,7 @@
     align-items: center;
     border-style: double;
     border-color: black;
+    overflow: scroll;
 }
 
 #checkoutHeader {
@@ -25,20 +26,35 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 50%;
+    // height: 50%;
     justify-content: center;
     gap: 8%;
+    overflow: scroll;
+    flex-grow: 1;
 }
 
 .cartItem {
     display: flex;
     flex-direction: row;
     gap: 45px;
-    align-items: flex-start;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.cartTotal {
+    margin-top: 30px;
 }
 
 #closeCheckout {
     position: absolute;
     top: 50px;
     right: 50px;
+}
+
+.checkoutBtnContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
